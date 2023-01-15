@@ -1,11 +1,17 @@
-const router = require('express').Router()
-const getToDos = require('../Controller/toDoController')
+const router = require("express").Router();
+const { getToDosController, createToDoController, updateToDoController } = require("../Controller/toDoController");
+const { validate } = require('../validation/validate')
+const { body } = require('express-validator');
 
-router.get('/', (req, res) => {  // this one is for testing purposes only
-    res.send('hello there')
-})
+router.get("/", (req, res) => {
+  // this one is for testing purposes only
+  res.send("hello there");
+});
 
-router.get('/todos', getToDos)
+router.get("/toDos", getToDosController);
 
+router.post("/create-toDo", body("toDoItem").isString(), validate, createToDoController);
 
-module.exports = { router }
+router.put("/update-toDo", updateToDoController)
+
+module.exports = { router };

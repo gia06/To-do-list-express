@@ -4,10 +4,10 @@ const { Schema } = Mongoose
 
 const toDoSchema = new Schema({
     toDoItem: String,
-    itemStatus: String,
+    itemStatus: String, //active or completed
     isDeleted: Boolean,
 })
 
-const toDOModel = Mongoose.model('toDoItem', toDoSchema)
+const toDoModel = Mongoose.model('toDoItem', toDoSchema)
 
-module.exports = toDOModel
+module.exports = {toDoModel} 

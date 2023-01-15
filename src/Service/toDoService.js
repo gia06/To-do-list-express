@@ -1,7 +1,22 @@
-const toDoModel = require('../Schema/toDoSchema')
+const { toDoModel } = require("../Schema/toDoSchema");
 
-const getTodos = async () => {
-    
-}
+const getToDos = async () => {
+  return (toDos = await toDoModel.find());
+};
 
-module.exports = { getTodos }
+const createTodo = async (item) => {
+  toDoModel.create({
+    toDoItem: item,
+    itemStatus: "active",
+    isDeleted: false,
+  });
+};
+
+const updateToDo = async (id, itemStatus) => {
+  return await toDoModel.findOneAndUpdate(
+    { _id: id },
+    { itemStatus: itemStatus }
+  );
+};
+
+module.exports = { getToDos, createTodo, updateToDo };
