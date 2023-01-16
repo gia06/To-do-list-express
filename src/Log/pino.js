@@ -1,13 +1,13 @@
-const pino = require('pino');
-require('dotenv').config();
+const pino = require("pino");
+require("dotenv").config();
 
-const pretty = process.env.PRETTY_LOGGING 
+const pretty = process.env.PRETTY_LOGGING
   ? {
       transport: {
-        target: 'pino-pretty',
+        target: "pino-pretty",
         options: {
-          translateTime: 'SYS:dd-mm-yyyy HH:MM:ss',
-          ignore: 'pid,hostname',
+          translateTime: "SYS:dd-mm-yyyy HH:MM:ss",
+          ignore: "pid,hostname",
         },
       },
     }
