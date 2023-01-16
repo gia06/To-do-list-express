@@ -8,7 +8,8 @@ const {
 } = require("../Service/toDoService");
 
 const getToDosController = async (req, res) => {
-  res.status(200).json(...(await getToDos()));
+  const toDos = await getToDos();
+  res.status(200).json(toDos);
 };
 
 const createToDoController = async (req, res) => {
