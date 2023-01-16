@@ -6,8 +6,8 @@ const {
   deleteToDoController,
   deleteCompletedToDosController,
 } = require("../Controller/toDoController");
-const { validate } = require("../validation/validate");
-const { validateId } = require("../validation/validateId");
+const { validate } = require("../Validation/validate");
+const { validateId } = require("../Validation/validateId");
 const { body } = require("express-validator");
 
 router.get("/toDos", getToDosController);

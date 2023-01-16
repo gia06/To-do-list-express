@@ -4,7 +4,7 @@ const { Schema } = Mongoose;
 
 const toDoSchema = new Schema({
   toDoItem: String,
-  itemStatus: String, //active or completed
+  itemStatus: String, // * active or completed
   isDeleted: Boolean,
 });
 
