@@ -9,7 +9,7 @@ const {
 
 const getToDosController = async (req, res) => {
   const toDos = await getToDos();
-  res.status(200).json(toDos);
+  res.status(200).json({ data: toDos });
 };
 
 const createToDoController = async (req, res) => {
@@ -27,7 +27,7 @@ const deleteToDoController = async (req, res) => {
   res.status(204).json({ result: "item deleted" });
 };
 
-const deleteCompletedToDosController = async (req, res, next) => {
+const deleteCompletedToDosController = async (req, res) => {
   await deleteCompletedToDos();
   res.status(204).json({ result: "items deleted" });
 };

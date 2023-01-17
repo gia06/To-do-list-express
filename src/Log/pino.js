@@ -15,4 +15,4 @@ const pretty = process.env.PRETTY_LOGGING
 
 const logger = pino(pretty);
 
-module.exports = logger;
+module.exports = { logger };

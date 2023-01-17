@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
-const logger = require('./Log/pino');
+const mongoose = require("mongoose");
+const { logger } = require("./Log/pino");
 
 mongoose.connect(process.env.MONGO_URI);
 
 const connection = mongoose.connection
-  .once('open', () => {
-    logger.info('connected to database');
+  .once("open", () => {
+    logger.info("connected to database");
   })
-  .on('error', (err) => {
+  .on("error", (err) => {
     logger.info(`mongoose error: ${err}`);
   });
 
