@@ -14,18 +14,20 @@ const createTodo = async ({ toDoItem }) => {
 
 const updateToDo = async ({ id }) => {
   const item = await toDoModel.findOne({ _id: id });
-
   if (item.itemStatus === "active") {
-    await item.update({ itemStatus: "completed" });
+    await item.updateOne({ itemStatus: "completed" });
   } else {
-    await item.update({ itemStatus: "active" });
+    await item.updateOne({ itemStatus: "active" });
   }
 };
 
+//  ! TODO  correct returning 204 always
 const deleteTodo = async ({ id }) => {
-  const deleted = await toDoModel.findOneAndDelete({ _id: id });
+  const item = await toDoModel.findOne({ _id: id });
+  const deleted = await item.delete({ _id: id });
 };
 
+//  ! TODO  correct returning 204 always
 const deleteCompletedToDos = async () => {
   await toDoModel.deleteMany({ itemStatus: "completed" });
 };
