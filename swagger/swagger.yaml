@@ -155,7 +155,7 @@ paths:
       responses:
         204:  
           description: Deletes item successfully
-        400:
+        404:
           description: Bad request, invalid id
           content:
             application/json:
@@ -163,10 +163,7 @@ paths:
                 type: object
               example:
                 errors: 
-                  value: 63c6bd91a402665be7da647
-                  msg: Invalid value
-                  param: id
-                  location: body
+                  msg: No items found with completed status
 
 
 

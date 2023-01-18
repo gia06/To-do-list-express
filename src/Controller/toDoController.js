@@ -1,4 +1,4 @@
-const logger = require("../Log/pino");
+const { logger } = require("../Log/pino");
 const {
   getToDos,
   createTodo,
@@ -9,6 +9,7 @@ const {
 
 const getToDosController = async (req, res) => {
   const toDos = await getToDos();
+  logger.info(toDos);
   res.status(200).json({ data: toDos });
 };
 
