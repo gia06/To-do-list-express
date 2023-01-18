@@ -1,4 +1,8 @@
 const router = require("express").Router();
+const { validate } = require("../Validation/validate");
+const { validateId } = require("../Validation/validateId");
+const { validateCompleted } = require("../Validation/validateCompleted");
+const { body } = require("express-validator");
 const {
   getToDosController,
   createToDoController,
@@ -6,23 +10,15 @@ const {
   deleteToDoController,
   deleteCompletedToDosController,
 } = require("../Controller/toDoController");
-const { validate } = require("../Validation/validate");
-const { validateId } = require("../Validation/validateId");
-const { body } = require("express-validator");
 
 router.get("/toDos", getToDosController);
 
-router.post(
-  "/create-toDo",
-  body("toDoItem").isString(),
-  validate,
-  createToDoController
-);
+router.post("/create-toDo",body("toDoItem").isString(), validate, createToDoController);
 
 router.put("/update-toDo", validateId, updateToDoController);
 
 router.delete("/delete-toDo", validateId, deleteToDoController);
 
-router.delete("/delete-completed", deleteCompletedToDosController);
+router.delete("/delete-completed", validateCompleted, deleteCompletedToDosController);
 
 module.exports = { router };
